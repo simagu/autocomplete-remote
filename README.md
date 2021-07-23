@@ -6,7 +6,7 @@
 * BootStrip (for combobx-remote)
 
 ### Demo
-![alt Demo](https://raw.githubusercontent.com/smk-projects/combobox-remote/master/docs/imgs/demo.gif)
+![alt Demo](https://raw.githubusercontent.com/simagu/autocomplete-remote/master/docs/imgs/demo.gif?token=AKXEDLGFMJ5LVHSOMYQQHBTA7KJK4)
 
 
 ### Model
