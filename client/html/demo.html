@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+<link rel="stylesheet" href="../css/paginate-autocomplete.css" />
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="../scripts/ui.paginated-autocomplete.js"></script>
+<script src="../scripts/ui.combobox-remote.js"></script>
+
+<script type="text/javascript">
+	;(function($){
+		$(function() {
+			autocomplete();
+			
+			$('#btnGetVal').click(function() {
+				var data = $('#selCityCombo').comboboxRemote('data');
+				if (data == null) { return; }
+				alert(data.cityCode + '-' + data.cityName);
+			});
+			
+			$('#btnSetVal').click(function() {
+				$('#selCityCombo').comboboxRemote('value', 'TPE', '台北市');
+			});
+			
+			$('#btnSetFocus').click(function() {
+				$('#selCityCombo').comboboxRemote('setfocus');
+			});
+			
+			$('#btnSetSelect').click(function() {
+				$('#selCityCombo').comboboxRemote('setselected');
+			});
+			
+			
+		});
+		
+		function autocomplete() {			
+			$('#txtAutocomplete').paginatedAutocomplete({
+				// 要傳送的網址
+				url: 'datasource.asp',
+				// 選項改變時觸發的事件
+				change: function (event, ui) {
+					if (ui.item == null) { console.log('未符合任何資料'); return; }
+					console.log('label:' + ui.item.label);
+					console.log('text:' + ui.item.text);
+					console.log('value:' + ui.item.value);
+				},
+				// 選項被選擇時觸發的事件
+				select: function(event, ui) {
+				if (ui.item == null) { console.log('未選取任何資料'); return; }
+					console.log('label:' + ui.item.label);
+					console.log('text:' + ui.item.text);
+					console.log('value:' + ui.item.value);
+				}
+			});
+			
+			$('#txtAutocompleteColumn').paginatedAutocomplete({
+				// 要傳送的網址
+				url: 'datasource.asp',				
+				// 選項改變時觸發的事件
+				change: function (event, ui) {
+					if (ui.item == null) { console.log('未符合任何資料'); return; }
+					console.log('label:' + ui.item.label);
+					console.log('text:' + ui.item.text);
+					console.log('value:' + ui.item.value);
+				},
+				columns: {   
+					cityCode: { width: 80, header: '城市代碼', align: 'center' },
+					cityName: { width: 120, header: '城市名稱' },
+					// 用function指定新欄位
+					colfn1: {
+						width:150, header: '城市',
+						value: function(item) {
+							return item.data.cityCode + '-' + item.data.cityName
+						}
+					},
+					colfn2: {
+						width:250, header: '說明',
+						value: function(item) {
+							return item.data.cityName + "是個好山好水的地方";
+						}
+					}
+				},
+				// 選項被選擇時觸發的事件
+				select: function(event, ui) {
+				if (ui.item == null) { console.log('未選取任何資料'); return; }
+					console.log('label:' + ui.item.label);
+					console.log('text:' + ui.item.text);
+					console.log('value:' + ui.item.value);
+				}
+			});
+			
+			$('#selCityCombo').comboboxRemote({
+				// 要傳送的網址
+				url: 'datasource.asp',
+				placeholder: '請選擇城市...',
+				// 選項改變時觸發的事件
+				change: function (event, ui) {
+					if (ui.item == null) { console.log('未符合任何資料'); return; }
+					console.log('label:' + ui.item.label);
+					console.log('text:' + ui.item.text);
+					console.log('value:' + ui.item.value);
+				},
+				// 選項被選擇時觸發的事件
+				select: function(event, ui) {
+				if (ui.item == null) { console.log('未選取任何資料'); return; }
+					console.log('label:' + ui.item.label);
+					console.log('text:' + ui.item.text);
+					console.log('value:' + ui.item.value);
+				}
+			});
+			
+			
+		}
+	
+	})(jQuery);
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>	
+	<form class="form-horizontal" role="form">
+		<div class="container">
+			<h1>Autocomplete Example</h1>
+			<hr />
+			<div class="row form-group">
+				<label class="control-label col-sm-3">自動完成</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="txtAutocomplete" />
+				</div>
+			</div>
+			
+			<div class="row form-group">
+				<label class="control-label col-sm-3">自動完成(表格)</label>
+				<div class="col-sm-4">
+					<input type="text" class="form-control" id="txtAutocompleteColumn" />
+				</div>
+			</div>
+			
+			<div class="row form-group">
+				<label class="control-label col-sm-3">自動完成(Combobox)</label>
+				<div class="col-sm-3">
+					<select id="selCityCombo"></select>
+				</div>
+				<div class="col-sm-5">
+					<div class="btn-group" role="group" aria-label="Basic example">
+					  <button class="btn btn-primary" id="btnGetVal" type="button">Get Data</button>
+					  <button class="btn btn-success" id="btnSetVal" type="button">Set Value</button>
+					  <button class="btn btn-danger" id="btnSetFocus" type="button">Set Focus</button>
+					  <button class="btn btn-warning" id="btnSetSelect" type="button">Set Select</button>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>		
+	</form>	
+</body>
+</html>

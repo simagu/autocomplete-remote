@@ -1,0 +1,53 @@
+/* ------------------------  */
+/* jQuery UI autocopmlete Class */
+/* ------------------------  */
+.ui-autocomplete {
+    z-index: 1070;
+}
+.ui-autocomplete-loading {
+    background: white url("../images/ui-anim_basic_16x16.gif") right center no-repeat;
+}
+.ui-autocomplete-pagination-container {
+    border:solid #AAA;
+    border-width:0px 0px 1px 0px;
+    height:20px;
+    min-width:250px; 
+}
+.ui-autocomplete-previous-page, 
+.ui-autocomplete-next-page,
+.ui-autocomplete-first-page, 
+.ui-autocomplete-last-page
+{
+    width:20px; 
+    height:20px; 
+    background:#F0F0F0;
+    font-size:8px;
+    border:1px solid #CCC;
+}
+.ui-autocomplete-pagination-result-item {
+    padding-top: 20px;
+    min-width: 250px;
+}
+     
+.ui-autocomplete-pagination-details {
+    font-size:10px;
+    color:#686868;
+}
+
+.ui-autocomplete-pagination-results {
+        
+}
+.ui-autocomplete-grid {
+    border:0px;
+}
+
+.ui-autocomplete-grid th {
+    border:0px solid #aaa;
+    border-width: 0px 1px 1px 0px;
+    background:#f0f0f0;
+}
+
+.ui-autocomplete-grid td {
+    border:0px solid #aaa;
+    border-right-width: 1px;
+}
