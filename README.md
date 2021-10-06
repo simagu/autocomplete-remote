@@ -3,7 +3,7 @@
 ### Depency
 * jQuery 3.*
 * jQuery-UI 12.* (jquery-ui > autocomplete)
-* BootStrip (for combobx-remote)
+* Bootstrip 4 (for combobx-remote)
 
 ### Demo
 ![alt Demo](https://raw.githubusercontent.com/simagu/autocomplete-remote/master/docs/imgs/demo.gif?token=AKXEDLGFMJ5LVHSOMYQQHBTA7KJK4)
@@ -31,7 +31,7 @@
 1. clone source from git.
 2. run `num install`
 3. startup server-side api scritpt: `npm run server`
-4. startup client web-service: `npm run client`
+4. startup client web server: `npm run client`
 5. open browser and type url: _http://127.0.0.1:3001_
 
 ### How to use
